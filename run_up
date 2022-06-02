@@ -1,0 +1,275 @@
+#!/bin/bash
+
+exists()
+{
+  command -v "$1" >/dev/null 2>&1
+}
+
+if exists wget; then
+echo ''
+else
+  sudo apt update && sudo apt install wget -y < "/dev/null"
+fi
+
+if exists unzip; then
+echo ''
+else 
+  sudo apt update && sudo apt install unzip -y < "/dev/null"
+fi
+ 
+if exists jq; then
+echo ''
+else
+  sudo apt update && sudo apt install jq -y < "/dev/null"
+fi
+
+mkdir $HOME/kyve; \
+cd $HOME/kyve
+
+echo -e 'list of pools:'
+echo -e '0 - moonbeam; 1 - avalanche; 2 - stacks; 3 - bitcoin;'
+echo -e '4 - solana; 5 - ziliqa; 6 - near; 7 - celo;'
+echo -e '8 - evmos evm; 9 - cosmos; 10 - injective; 11 - evmos cosmos;'
+echo -e '12 - axelar; 13- aurora; 14 - cronos; 15 - terra;'
+echo -e '16 - umee;'
+
+echo -n "Enter pool id ->"
+read VAR
+
+if [[ $VAR == 0 ]]
+then
+  POOL=0 && \
+  NAME="evm" && \
+  BIN="kyve-evm" && \
+  VER=$(wget -qO- https://api.github.com/repos/kyve-org/$NAME/releases/latest | jq -r ".tag_name") && \
+  wget https://github.com/kyve-org/$NAME/releases/download/$VER/kyve-$NAME-linux.zip && \
+  unzip kyve-$NAME-linux.zip && \
+  rm -Rvf kyve-$NAME-linux.zip __MACOSX && \
+  chmod u+x * && \
+  mv kyve-$NAME-linux /usr/bin/$BIN && \
+  printf "\n$BIN version: $($BIN --version), pool id: $POOL.\n\n"
+elif [[ $VAR == 1 ]]
+then
+  POOL=1 && \
+  NAME="evm" && \
+  BIN="kyve-evm" && \
+  VER=$(wget -qO- https://api.github.com/repos/kyve-org/$NAME/releases/latest | jq -r ".tag_name") && \
+  wget https://github.com/kyve-org/$NAME/releases/download/$VER/kyve-$NAME-linux.zip && \
+  unzip kyve-$NAME-linux.zip && \
+  rm -Rvf kyve-$NAME-linux.zip __MACOSX && \
+  chmod u+x * && \
+  mv kyve-$NAME-linux /usr/bin/$BIN && \
+  printf "\n$BIN version: $($BIN --version), pool id: $POOL.\n\n"
+elif [[ $VAR == 2 ]]
+then
+  POOL=2 && \
+  NAME="stacks" && \
+  BIN="kyve-stx" && \
+  VER=$(wget -qO- https://api.github.com/repos/kyve-org/$NAME/releases/latest | jq -r ".tag_name") && \
+  wget https://github.com/kyve-org/$NAME/releases/download/$VER/$NAME-linux.zip && \
+  unzip $NAME-linux.zip && \
+  rm -Rvf $NAME-linux.zip __MACOSX && \
+  chmod u+x * && \
+  mv $NAME-linux /usr/bin/$BIN && \
+  printf "\n$BIN version: $($BIN --version), pool id: $POOL.\n\n"
+elif [[ $VAR == 3 ]]
+then
+  POOL=3 && \
+  NAME="bitcoin" && \
+  BIN="kyve-btc" && \
+  VER=$(wget -qO- https://api.github.com/repos/kyve-org/$NAME/releases/latest | jq -r ".tag_name") && \
+  wget https://github.com/kyve-org/$NAME/releases/download/$VER/kyve-$NAME-linux.zip && \
+  unzip kyve-$NAME-linux.zip && \
+  rm -Rvf kyve-$NAME-linux.zip __MACOSX && \
+  chmod u+x * && \
+  mv $NAME-linux /usr/bin/$BIN && \
+  printf "\n$BIN version: $($BIN --version), pool id: $POOL.\n\n"
+elif [[ $VAR == 4 ]]
+then
+  POOL=4 && \
+  NAME="solana" && \
+  BIN="kyve-sol" && \
+  VER=$(wget -qO- https://api.github.com/repos/kyve-org/$NAME/releases/latest | jq -r ".tag_name") && \
+  wget https://github.com/kyve-org/$NAME/releases/download/$VER/kyve-$NAME-linux.zip && \
+  unzip kyve-$NAME-linux.zip && \
+  rm -Rvf kyve-$NAME-linux.zip __MACOSX && \
+  chmod u+x * && \
+  mv kyve-$NAME-linux /usr/bin/$BIN && \
+  printf "\n$BIN version: $($BIN --version), pool id: $POOL.\n\n"
+elif [[ $VAR == 5 ]]
+then
+  POOL=5 && \
+  NAME="zilliqa" && \
+  BIN="kyve-zil" && \
+  VER=$(wget -qO- https://api.github.com/repos/kyve-org/$NAME/releases/latest | jq -r ".tag_name") && \
+  wget https://github.com/kyve-org/$NAME/releases/download/$VER/kyve-$NAME-linux.zip && \
+  unzip kyve-$NAME-linux.zip && \
+  rm -Rvf kyve-$NAME-linux.zip __MACOSX && \
+  chmod u+x * && \
+  mv kyve-$NAME-linux /usr/bin/$BIN && \
+  printf "\n$BIN version: $($BIN --version), pool id: $POOL.\n\n"
+elif [[ $VAR == 6 ]]
+then
+  POOL=6 && \
+  NAME="near" && \
+  BIN="kyve-near" && \
+  VER=$(wget -qO- https://api.github.com/repos/kyve-org/$NAME/releases/latest | jq -r ".tag_name") && \
+  wget https://github.com/kyve-org/$NAME/releases/download/$VER/kyve-$NAME-linux.zip && \
+  unzip kyve-$NAME-linux.zip && \
+  rm -Rvf kyve-$NAME-linux.zip __MACOSX && \
+  chmod u+x * && \
+  mv kyve-$NAME-linux /usr/bin/$BIN && \
+  printf "\n$BIN version: $($BIN --version), pool id: $POOL.\n\n"
+elif [[ $VAR == 7 ]]
+then
+  POOL=7 && \
+  NAME="celo" && \
+  BIN="kyve-celo" && \
+  VER=$(wget -qO- https://api.github.com/repos/kyve-org/$NAME/releases/latest | jq -r ".tag_name") && \
+  wget https://github.com/kyve-org/$NAME/releases/download/$VER/kyve-$NAME-linux.zip && \
+  unzip kyve-$NAME-linux.zip && \
+  rm -Rvf kyve-$NAME-linux.zip __MACOSX && \
+  chmod u+x * && \
+  mv kyve-$NAME-linux /usr/bin/$BIN && \
+  printf "\n$BIN version: $($BIN --version), pool id: $POOL.\n\n"
+elif [[ $VAR == 8 ]]
+then
+  POOL=8 && \
+  NAME="evm" && \
+  BIN="kyve-evm" && \
+  VER=$(wget -qO- https://api.github.com/repos/kyve-org/$NAME/releases/latest | jq -r ".tag_name") && \
+  wget https://github.com/kyve-org/$NAME/releases/download/$VER/kyve-$NAME-linux.zip && \
+  unzip kyve-$NAME-linux.zip && \
+  rm -Rvf kyve-$NAME-linux.zip __MACOSX && \
+  chmod u+x * && \
+  mv kyve-$NAME-linux /usr/bin/$BIN && \
+  printf "\n$BIN version: $($BIN --version), pool id: $POOL.\n\n"
+elif [[ $VAR == 9 ]]
+then
+  POOL=9 && \
+  NAME="cosmos" && \
+  BIN="kyve-cosmos" && \
+  VER=$(wget -qO- https://api.github.com/repos/kyve-org/$NAME/releases/latest | jq -r ".tag_name") && \
+  wget https://github.com/kyve-org/$NAME/releases/download/$VER/kyve-$NAME-linux.zip && \
+  unzip kyve-$NAME-linux.zip && \
+  rm -Rvf kyve-$NAME-linux.zip __MACOSX && \
+  chmod u+x * && \
+  mv kyve-$NAME-linux /usr/bin/$BIN && \
+  printf "\n$BIN version: $($BIN --version), pool id: $POOL.\n\n"
+elif [[ $VAR == 10 ]]
+then
+  POOL=10 && \
+  NAME="cosmos" && \
+  BIN="kyve-cosmos" && \
+  VER=$(wget -qO- https://api.github.com/repos/kyve-org/$NAME/releases/latest | jq -r ".tag_name") && \
+  wget https://github.com/kyve-org/$NAME/releases/download/$VER/kyve-$NAME-linux.zip && \
+  unzip kyve-$NAME-linux.zip && \
+  rm -Rvf kyve-$NAME-linux.zip __MACOSX && \
+  chmod u+x * && \
+  mv kyve-$NAME-linux /usr/bin/$BIN && \
+  printf "\n$BIN version: $($BIN --version), pool id: $POOL.\n\n"
+elif [[ $VAR == 11 ]]
+then
+  POOL=11 && \
+  NAME="cosmos" && \
+  BIN="kyve-cosmos" && \
+  VER=$(wget -qO- https://api.github.com/repos/kyve-org/$NAME/releases/latest | jq -r ".tag_name") && \
+  wget https://github.com/kyve-org/$NAME/releases/download/$VER/kyve-$NAME-linux.zip && \
+  unzip kyve-$NAME-linux.zip && \
+  rm -Rvf kyve-$NAME-linux.zip __MACOSX && \
+  chmod u+x * && \
+  mv kyve-$NAME-linux /usr/bin/$BIN && \
+  printf "\n$BIN version: $($BIN --version), pool id: $POOL.\n\n"
+elif [[ $VAR == 12 ]]
+then
+  POOL=12 && \
+  NAME="cosmos" && \
+  BIN="kyve-cosmos" && \
+  VER=$(wget -qO- https://api.github.com/repos/kyve-org/$NAME/releases/latest | jq -r ".tag_name") && \
+  wget https://github.com/kyve-org/$NAME/releases/download/$VER/kyve-$NAME-linux.zip && \
+  unzip kyve-$NAME-linux.zip && \
+  rm -Rvf kyve-$NAME-linux.zip __MACOSX && \
+  chmod u+x * && \
+  mv kyve-$NAME-linux /usr/bin/$BIN && \
+  printf "\n$BIN version: $($BIN --version), pool id: $POOL.\n\n"
+elif [[ $VAR == 13 ]]
+then
+  POOL=13 && \
+  NAME="evm" && \
+  BIN="kyve-evm" && \
+  VER=$(wget -qO- https://api.github.com/repos/kyve-org/$NAME/releases/latest | jq -r ".tag_name") && \
+  wget https://github.com/kyve-org/$NAME/releases/download/$VER/kyve-$NAME-linux.zip && \
+  unzip kyve-$NAME-linux.zip && \
+  rm -Rvf kyve-$NAME-linux.zip __MACOSX && \
+  chmod u+x * && \
+  mv kyve-$NAME-linux /usr/bin/$BIN && \
+  printf "\n$BIN version: $($BIN --version), pool id: $POOL.\n\n"
+elif [[ $VAR == 14 ]]
+then
+  POOL=14 && \
+  NAME="cosmos" && \
+  BIN="kyve-cosmos" && \
+  VER=$(wget -qO- https://api.github.com/repos/kyve-org/$NAME/releases/latest | jq -r ".tag_name") && \
+  wget https://github.com/kyve-org/$NAME/releases/download/$VER/kyve-$NAME-linux.zip && \
+  unzip kyve-$NAME-linux.zip && \
+  rm -Rvf kyve-$NAME-linux.zip __MACOSX && \
+  chmod u+x * && \
+  mv kyve-$NAME-linux /usr/bin/$BIN && \
+  printf "\n$BIN version: $($BIN --version), pool id: $POOL.\n\n"
+elif [[ $VAR == 15 ]]
+then
+  POOL=15 && \
+  NAME="cosmos" && \
+  BIN="kyve-cosmos" && \
+  VER=$(wget -qO- https://api.github.com/repos/kyve-org/$NAME/releases/latest | jq -r ".tag_name") && \
+  wget https://github.com/kyve-org/$NAME/releases/download/$VER/kyve-$NAME-linux.zip && \
+  unzip kyve-$NAME-linux.zip && \
+  rm -Rvf kyve-$NAME-linux.zip __MACOSX && \
+  chmod u+x * && \
+  mv kyve-$NAME-linux /usr/bin/$BIN && \
+  printf "\n$BIN version: $($BIN --version), pool id: $POOL.\n\n"
+elif [[ $VAR == 16 ]]
+then
+  POOL=16 && \
+  NAME="cosmos" && \
+  BIN="kyve-cosmos" && \
+  VER=$(wget -qO- https://api.github.com/repos/kyve-org/$NAME/releases/latest | jq -r ".tag_name") && \
+  wget https://github.com/kyve-org/$NAME/releases/download/$VER/kyve-$NAME-linux.zip && \
+  unzip kyve-$NAME-linux.zip && \
+  rm -Rvf kyve-$NAME-linux.zip __MACOSX && \
+  chmod u+x * && \
+  mv kyve-$NAME-linux /usr/bin/$BIN && \
+  printf "\n$BIN version: $($BIN --version), pool id: $POOL.\n\n"
+fi
+
+read -p "Input you stake ->" STAKE
+echo 'export STAKE='\"${STAKE}\" >> $HOME/.bash_profile
+read -p "Paste your mnemonic ->" MNEMONIC
+echo 'export MNEMONIC='\"${MNEMONIC}\" >> $HOME/.bash_profile
+
+sudo tee <<EOF >/dev/null /etc/systemd/system/kyved.service
+[Unit]
+Description=Kyve Node
+After=network.target
+[Service]
+Type=simple
+User=$USER
+ExecStart=$(which $BIN) \\
+--poolId $POOL \\
+--mnemonic "$MNEMONIC" \\
+--initialStake $STAKE \\
+--keyfile /root/arweave.json \\
+--network korellia \\
+--space 10000000000 \\
+--verbose
+Restart=on-failure
+RestartSec=10
+LimitNOFILE=10000
+[Install]
+WantedBy=multi-user.target
+EOF
+
+sudo systemctl daemon-reload && \
+sudo systemctl enable kyved && \
+sudo systemctl restart kyved
+rm -f $HOME/run_up 

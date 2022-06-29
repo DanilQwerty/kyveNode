@@ -36,10 +36,32 @@ read VAR
 if [[ $VAR == 0 ]]
 then
   POOL=0 && REP_NAME="evm" && BIN="kyve-evm" && NAME="moonbeam"
-elif [[ $VAR == 1 ]]
+  VER=$(wget -qO- https://api.github.com/repos/kyve-org/${REP_NAME}/releases/tag/v1.1.0 | jq -r ".tag_name") && \
+  wget https://github.com/kyve-org/${REP_NAME}/releases/download/v1.1.0/kyve-linux.zip && \
+  unzip kyve-linux.zip && \
+  rm -Rvf kyve-linux.zip __MACOSX && \
+  chmod u+x kyve-linux && \
+  mv kyve-linux /usr/bin/${BIN} && \
+  printf "\n\
+  pool_name >>> ${NAME}.\n\
+  pool__num >>> #${POOL}.\n\
+  bin__name >>> ${BIN}.\n\
+  bin___ver >>> v$(${BIN} --version).\n\n"
+  elif [[ $VAR == 1 ]]
 then
-  POOL=0 && REP_NAME="evm" && BIN="kyve-evm" && NAME="moonbeam"
-elif [[ $VAR == 2 ]]
+  POOL=1 && REP_NAME="evm" && BIN="kyve-evm" && NAME="avalanche"
+  VER=$(wget -qO- https://api.github.com/repos/kyve-org/${REP_NAME}/releases/tag/v1.1.0 | jq -r ".tag_name") && \
+  wget https://github.com/kyve-org/${REP_NAME}/releases/download/v1.1.0/kyve-linux.zip && \
+  unzip kyve-linux.zip && \
+  rm -Rvf kyve-linux.zip __MACOSX && \
+  chmod u+x kyve-linux && \
+  mv kyve-linux /usr/bin/${BIN} && \
+  printf "\n\
+  pool_name >>> ${NAME}.\n\
+  pool__num >>> #${POOL}.\n\
+  bin__name >>> ${BIN}.\n\
+  bin___ver >>> v$(${BIN} --version).\n\n"
+  elif [[ $VAR == 2 ]]
 then
   POOL=2 && REP_NAME="stacks" && BIN="kyve-stx" && NAME="stacks"
 elif [[ $VAR == 3 ]]
@@ -91,35 +113,6 @@ elif [[ $VAR == 18 ]]
 then
   POOL=18 && REP_NAME="substrate" && BIN="kyve-substrate" && NAME="kusama"
 fi
-
-if [[$BIN == "kyve-evm"]]
-then
-  VER=$(wget -qO- https://api.github.com/repos/kyve-org/${REP_NAME}/releases/tag/v1.1.0 | jq -r ".tag_name") && \
-  wget https://github.com/kyve-org/${REP_NAME}/releases/download/v1.1.0/kyve-linux.zip && \
-  unzip kyve-linux.zip && \
-  rm -Rvf kyve-linux.zip __MACOSX && \
-  chmod u+x kyve-linux && \
-  mv kyve-linux /usr/bin/${BIN} && \
-  printf "\n\
-  pool_name >>> ${NAME}.\n\
-  pool__num >>> #${POOL}.\n\
-  bin__name >>> ${BIN}.\n\
-  bin___ver >>> v$(${BIN} --version).\n\n"
-else
-  VER=$(wget -qO- https://api.github.com/repos/kyve-org/${REP_NAME}/releases/tag/v0.1.0 | jq -r ".tag_name") && \
-  wget https://github.com/kyve-org/${REP_NAME}/releases/download/v0.1.0/kyve-linux.zip && \
-  unzip kyve-linux.zip && \
-  rm -Rvf kyve-linux.zip __MACOSX && \
-  chmod u+x kyve-linux && \
-  mv kyve-linux /usr/bin/${BIN} && \
-  printf "\n\
-  pool_name >>> ${NAME}.\n\
-  pool__num >>> #${POOL}.\n\
-  bin__name >>> ${BIN}.\n\
-  bin___ver >>> v$(${BIN} --version).\n\n"
-fi  
-
-
 
 read -p "Input you stake ->" STAKE
 echo 'export STAKE='\"${STAKE}\" >> $HOME/.bash_profile

@@ -130,15 +130,15 @@ then
   wget https://github.com/kyve-org/${REP_NAME}/releases/download/v0.1.0/kyve-linux.zip && \
 fi
 
-unzip kyve-linux.zip && \
-rm -Rvf kyve-linux.zip __MACOSX && \
-chmod u+x kyve-linux && \
-mv kyve-linux /usr/bin/${BIN} && \
-printf "\n\
-pool_name >>> ${NAME}.\n\
-pool__num >>> #${POOL}.\n\
-bin__name >>> ${BIN}.\n\
-bin___ver >>> v$(${BIN} --version).\n\n"
+  unzip kyve-linux.zip && \
+  rm -Rvf kyve-linux.zip __MACOSX && \
+  chmod u+x kyve-linux && \
+  mv kyve-linux /usr/bin/${BIN} && \
+  printf "\n\
+  pool_name >>> ${NAME}.\n\
+  pool__num >>> #${POOL}.\n\
+  bin__name >>> ${BIN}.\n\
+  bin___ver >>> v$(${BIN} --version).\n\n"
 
 read -p "Input you stake ->" STAKE
 echo 'export STAKE='\"${STAKE}\" >> $HOME/.bash_profile

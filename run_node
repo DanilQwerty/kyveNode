@@ -35,7 +35,7 @@ read VAR
 
 if [[ $VAR == 0 ]]
 then
-  POOL=0 && REP_NAME="evm" && BIN="kyve-evm" && NAME="moonbeam" && EVM=true
+  POOL=0 && REP_NAME="evm" && BIN="kyve-evm" && NAME="moonbeam"
 elif [[ $VAR == 1 ]]
 then
   POOL=1 && REP_NAME="evm" && BIN="kyve-evm" && NAME="avalanche"

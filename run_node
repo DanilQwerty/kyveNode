@@ -92,7 +92,7 @@ then
   POOL=18 && REP_NAME="substrate" && BIN="kyve-substrate" && NAME="kusama"
 fi
 
-if[[$REP_NAME == "evm"]]
+if [[ $REP_NAME == "evm" ]]
 then
 	VER=$(wget -qO- https://api.github.com/repos/kyve-org/${REP_NAME}/releases/tag/v1.2.0 | jq -r ".tag_name") && \
 	wget https://github.com/kyve-org/${REP_NAME}/releases/download/v1.2.0/kyve-linux.zip && \

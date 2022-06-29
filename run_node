@@ -38,81 +38,107 @@ then
   POOL=0 && REP_NAME="evm" && BIN="kyve-evm" && NAME="moonbeam"
   VER=$(wget -qO- https://api.github.com/repos/kyve-org/${REP_NAME}/releases/tag/v1.1.0 | jq -r ".tag_name") && \
   wget https://github.com/kyve-org/${REP_NAME}/releases/download/v1.1.0/kyve-linux.zip && \
-  unzip kyve-linux.zip && \
-  rm -Rvf kyve-linux.zip __MACOSX && \
-  chmod u+x kyve-linux && \
-  mv kyve-linux /usr/bin/${BIN} && \
-  printf "\n\
-  pool_name >>> ${NAME}.\n\
-  pool__num >>> #${POOL}.\n\
-  bin__name >>> ${BIN}.\n\
-  bin___ver >>> v$(${BIN} --version).\n\n"
   elif [[ $VAR == 1 ]]
 then
   POOL=1 && REP_NAME="evm" && BIN="kyve-evm" && NAME="avalanche"
   VER=$(wget -qO- https://api.github.com/repos/kyve-org/${REP_NAME}/releases/tag/v1.1.0 | jq -r ".tag_name") && \
   wget https://github.com/kyve-org/${REP_NAME}/releases/download/v1.1.0/kyve-linux.zip && \
-  unzip kyve-linux.zip && \
-  rm -Rvf kyve-linux.zip __MACOSX && \
-  chmod u+x kyve-linux && \
-  mv kyve-linux /usr/bin/${BIN} && \
-  printf "\n\
-  pool_name >>> ${NAME}.\n\
-  pool__num >>> #${POOL}.\n\
-  bin__name >>> ${BIN}.\n\
-  bin___ver >>> v$(${BIN} --version).\n\n"
   elif [[ $VAR == 2 ]]
 then
   POOL=2 && REP_NAME="stacks" && BIN="kyve-stx" && NAME="stacks"
+  VER=$(wget -qO- https://api.github.com/repos/kyve-org/${REP_NAME}/releases/tag/v0.1.0 | jq -r ".tag_name") && \
+  wget https://github.com/kyve-org/${REP_NAME}/releases/download/v0.1.0/kyve-linux.zip && \
 elif [[ $VAR == 3 ]]
 then
   POOL=3 && REP_NAME="bitcoin" && BIN="kyve-btc" && NAME="bitcoin"
+  VER=$(wget -qO- https://api.github.com/repos/kyve-org/${REP_NAME}/releases/tag/v0.1.0 | jq -r ".tag_name") && \
+  wget https://github.com/kyve-org/${REP_NAME}/releases/download/v0.1.0/kyve-linux.zip && \
 elif [[ $VAR == 4 ]]
 then
   POOL=4 && REP_NAME="solana" && BIN="kyve-sol" && NAME="solana"
+  VER=$(wget -qO- https://api.github.com/repos/kyve-org/${REP_NAME}/releases/tag/v0.1.0 | jq -r ".tag_name") && \
+  wget https://github.com/kyve-org/${REP_NAME}/releases/download/v0.1.0/kyve-linux.zip && \
 elif [[ $VAR == 5 ]]
 then
   POOL=5 && REP_NAME="zilliqa" && BIN="kyve-zil" && NAME="zilliqa"
+  VER=$(wget -qO- https://api.github.com/repos/kyve-org/${REP_NAME}/releases/tag/v0.1.0 | jq -r ".tag_name") && \
+  wget https://github.com/kyve-org/${REP_NAME}/releases/download/v0.1.0/kyve-linux.zip && \
 elif [[ $VAR == 6 ]]
 then
   POOL=6 && REP_NAME="near" && BIN="kyve-near" && NAME="near"
+  VER=$(wget -qO- https://api.github.com/repos/kyve-org/${REP_NAME}/releases/tag/v0.1.0 | jq -r ".tag_name") && \
+  wget https://github.com/kyve-org/${REP_NAME}/releases/download/v0.1.0/kyve-linux.zip && \
 elif [[ $VAR == 7 ]]
 then
   POOL=7 && REP_NAME="celo" && BIN="kyve-celo" && NAME="celo"
+  VER=$(wget -qO- https://api.github.com/repos/kyve-org/${REP_NAME}/releases/tag/v0.1.0 | jq -r ".tag_name") && \
+  wget https://github.com/kyve-org/${REP_NAME}/releases/download/v0.1.0/kyve-linux.zip && \
 elif [[ $VAR == 8 ]]
 then
   POOL=8 && REP_NAME="evm" && BIN="kyve-evm" && NAME="evmos evm"
+  VER=$(wget -qO- https://api.github.com/repos/kyve-org/${REP_NAME}/releases/tag/v1.1.0 | jq -r ".tag_name") && \
+  wget https://github.com/kyve-org/${REP_NAME}/releases/download/v1.1.0/kyve-linux.zip && \
 elif [[ $VAR == 9 ]]
 then
   POOL=9 && REP_NAME="cosmos" && BIN="kyve-cosmos" && NAME="cosmos"
+  VER=$(wget -qO- https://api.github.com/repos/kyve-org/${REP_NAME}/releases/tag/v0.1.0 | jq -r ".tag_name") && \
+  wget https://github.com/kyve-org/${REP_NAME}/releases/download/v0.1.0/kyve-linux.zip && \
 elif [[ $VAR == 10 ]]
 then
   POOL=10 && REP_NAME="cosmos" && BIN="kyve-cosmos" && NAME="injective"
+  VER=$(wget -qO- https://api.github.com/repos/kyve-org/${REP_NAME}/releases/tag/v0.1.0 | jq -r ".tag_name") && \
+  wget https://github.com/kyve-org/${REP_NAME}/releases/download/v0.1.0/kyve-linux.zip && \
 elif [[ $VAR == 11 ]]
 then
   POOL=11 && REP_NAME="cosmos" && BIN="kyve-cosmos" && NAME="evmos cosmos"
+  VER=$(wget -qO- https://api.github.com/repos/kyve-org/${REP_NAME}/releases/tag/v0.1.0 | jq -r ".tag_name") && \
+  wget https://github.com/kyve-org/${REP_NAME}/releases/download/v0.1.0/kyve-linux.zip && \
 elif [[ $VAR == 12 ]]
 then
   POOL=12 && REP_NAME="cosmos" && BIN="kyve-cosmos" && NAME="axelar"
+  VER=$(wget -qO- https://api.github.com/repos/kyve-org/${REP_NAME}/releases/tag/v0.1.0 | jq -r ".tag_name") && \
+  wget https://github.com/kyve-org/${REP_NAME}/releases/download/v0.1.0/kyve-linux.zip && \
 elif [[ $VAR == 13 ]]
 then
   POOL=13 && REP_NAME="evm" && BIN="kyve-evm" && NAME="aurora"
+  VER=$(wget -qO- https://api.github.com/repos/kyve-org/${REP_NAME}/releases/tag/v1.1.0 | jq -r ".tag_name") && \
+  wget https://github.com/kyve-org/${REP_NAME}/releases/download/v1.1.0/kyve-linux.zip && \
 elif [[ $VAR == 14 ]]
 then
   POOL=14 && REP_NAME="cosmos" && BIN="kyve-cosmos" && NAME="cronos"
+  VER=$(wget -qO- https://api.github.com/repos/kyve-org/${REP_NAME}/releases/tag/v0.1.0 | jq -r ".tag_name") && \
+  wget https://github.com/kyve-org/${REP_NAME}/releases/download/v0.1.0/kyve-linux.zip && \
 elif [[ $VAR == 15 ]]
 then
   POOL=15 && REP_NAME="cosmos" && BIN="kyve-cosmos" && NAME="terra"
+  VER=$(wget -qO- https://api.github.com/repos/kyve-org/${REP_NAME}/releases/tag/v0.1.0 | jq -r ".tag_name") && \
+  wget https://github.com/kyve-org/${REP_NAME}/releases/download/v0.1.0/kyve-linux.zip && \
 elif [[ $VAR == 16 ]]
 then
   POOL=16 && REP_NAME="cosmos" && BIN="kyve-cosmos" && NAME="umee"
+  VER=$(wget -qO- https://api.github.com/repos/kyve-org/${REP_NAME}/releases/tag/v0.1.0 | jq -r ".tag_name") && \
+  wget https://github.com/kyve-org/${REP_NAME}/releases/download/v0.1.0/kyve-linux.zip && \
 elif [[ $VAR == 17 ]]
 then
   POOL=17 && REP_NAME="substrate" && BIN="kyve-substrate" && NAME="polkadot"
+  VER=$(wget -qO- https://api.github.com/repos/kyve-org/${REP_NAME}/releases/tag/v0.1.0 | jq -r ".tag_name") && \
+  wget https://github.com/kyve-org/${REP_NAME}/releases/download/v0.1.0/kyve-linux.zip && \
 elif [[ $VAR == 18 ]]
 then
   POOL=18 && REP_NAME="substrate" && BIN="kyve-substrate" && NAME="kusama"
+  VER=$(wget -qO- https://api.github.com/repos/kyve-org/${REP_NAME}/releases/tag/v0.1.0 | jq -r ".tag_name") && \
+  wget https://github.com/kyve-org/${REP_NAME}/releases/download/v0.1.0/kyve-linux.zip && \
 fi
+
+unzip kyve-linux.zip && \
+rm -Rvf kyve-linux.zip __MACOSX && \
+chmod u+x kyve-linux && \
+mv kyve-linux /usr/bin/${BIN} && \
+printf "\n\
+pool_name >>> ${NAME}.\n\
+pool__num >>> #${POOL}.\n\
+bin__name >>> ${BIN}.\n\
+bin___ver >>> v$(${BIN} --version).\n\n"
 
 read -p "Input you stake ->" STAKE
 echo 'export STAKE='\"${STAKE}\" >> $HOME/.bash_profile

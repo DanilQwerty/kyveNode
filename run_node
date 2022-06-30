@@ -105,6 +105,19 @@ then
 	pool__num >>> #${POOL}.\n\
 	bin__name >>> ${BIN}.\n\
 	bin___ver >>> v$(${BIN} --version).\n\n"
+elif [[ $REP_NAME == "substrate" ]]
+then
+	VER=$(wget -qO- https://api.github.com/repos/kyve-org/${REP_NAME}/releases/tag/v0.1.0 | jq -r ".tag_name") && \
+	wget https://github.com/kyve-org/${REP_NAME}/releases/download/v0.1.0/kyve-linux.zip && \
+	unzip kyve-linux.zip && \
+	rm -Rvf kyve-linux.zip __MACOSX && \
+	chmod u+x kyve-linux && \
+	mv kyve-linux /usr/bin/${BIN} && \
+	printf "\n\
+	pool_name >>> ${NAME}.\n\
+	pool__num >>> #${POOL}.\n\
+	bin__name >>> ${BIN}.\n\
+	bin___ver >>> v$(${BIN} --version).\n\n"
 else
 	VER=$(wget -qO- https://api.github.com/repos/kyve-org/${REP_NAME}/releases/tag/v0.2.0 | jq -r ".tag_name") && \
 	wget https://github.com/kyve-org/${REP_NAME}/releases/download/v0.2.0/kyve-linux.zip && \

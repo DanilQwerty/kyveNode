@@ -94,8 +94,8 @@ fi
 
 if [[ $REP_NAME == "evm" ]]
 then
-	VER=$(wget -qO- https://api.github.com/repos/kyve-org/${REP_NAME}/releases/tag/v1.3.4 | jq -r ".tag_name") && \
-	wget https://github.com/kyve-org/${REP_NAME}/releases/download/v1.3.4/kyve-linux.zip && \
+	VER=$(wget -qO- https://api.github.com/repos/kyve-org/${REP_NAME}/releases/tag/v1.3.3 | jq -r ".tag_name") && \
+	wget https://github.com/kyve-org/${REP_NAME}/releases/download/v1.3.3/kyve-linux.zip && \
 	unzip kyve-linux.zip && \
 	rm -Rvf kyve-linux.zip __MACOSX && \
 	chmod u+x kyve-linux && \

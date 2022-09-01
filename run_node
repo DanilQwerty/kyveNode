@@ -119,8 +119,8 @@ then
 	bin__name >>> ${BIN}.\n\
 	bin___ver >>> v$(${BIN} --version).\n\n"
 else
-	VER=$(wget -qO- https://api.github.com/repos/kyve-org/${REP_NAME}/releases/tag/v0.3.5 | jq -r ".tag_name") && \
-	wget https://github.com/kyve-org/${REP_NAME}/releases/download/v0.3.5/kyve-linux.zip && \
+	VER=$(wget -qO- https://api.github.com/repos/kyve-org/${REP_NAME}/releases/tag/v0.3.6 | jq -r ".tag_name") && \
+	wget https://github.com/kyve-org/${REP_NAME}/releases/download/v0.3.6/kyve-linux.zip && \
 	unzip kyve-linux.zip && \
 	rm -Rvf kyve-linux.zip __MACOSX && \
 	chmod u+x kyve-linux && \
